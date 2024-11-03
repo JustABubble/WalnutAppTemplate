@@ -9,19 +9,20 @@ project "WalnutApp"
 
    includedirs
    {
-      "../Walnut/vendor/imgui",
-      "../Walnut/vendor/glfw/include",
-      "../Walnut/vendor/glm",
+      "../vendor/imgui",
+      "../vendor/glfw/include",
 
-      "../Walnut/Walnut/src",
+      "../Walnut/Source",
+      "../Walnut/Platform/GUI",
 
       "%{IncludeDir.VulkanSDK}",
+      "%{IncludeDir.glm}",
    }
 
-   links
-   {
-       "Walnut"
-   }
+    links
+    {
+        "Walnut"
+    }
 
    targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
    objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
