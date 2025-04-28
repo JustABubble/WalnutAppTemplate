@@ -1,7 +1,7 @@
 project "WalnutApp"
    kind "ConsoleApp"
    language "C++"
-   cppdialect "C++17"
+   cppdialect "C++20"
    targetdir "bin/%{cfg.buildcfg}"
    staticruntime "off"
 
@@ -10,18 +10,22 @@ project "WalnutApp"
    includedirs
    {
       "../Walnut/vendor/imgui",
-      "../Walnut/vendor/glfw/include",
-      "../Walnut/vendor/glm",
+      "../Walnut/vendor/GLFW/include",
 
-      "../Walnut/Walnut/src",
+      "../Walnut/Walnut/Source",
+      "../Walnut/Walnut/Platform/GUI",
 
       "%{IncludeDir.VulkanSDK}",
+      "%{IncludeDir.glm}",
    }
 
-   links
-   {
-       "Walnut"
-   }
+    links
+    {
+        "Walnut",
+        "GLFW",
+        "ImGui",
+        "%{Library.Vulkan}"
+    }
 
    targetdir ("../bin/" .. outputdir .. "/%{prj.name}")
    objdir ("../bin-int/" .. outputdir .. "/%{prj.name}")
@@ -29,6 +33,7 @@ project "WalnutApp"
    filter "system:windows"
       systemversion "latest"
       defines { "WL_PLATFORM_WINDOWS" }
+      buildoptions { "/utf-8" }
 
    filter "configurations:Debug"
       defines { "WL_DEBUG" }

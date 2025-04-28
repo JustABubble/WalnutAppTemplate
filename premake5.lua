@@ -5,6 +5,6 @@ workspace "WalnutApp"
    startproject "WalnutApp"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
-include "Walnut/WalnutExternal.lua"
+include "Walnut/Build-Walnut-External.lua"
 
 include "WalnutApp"
